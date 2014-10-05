@@ -1,6 +1,6 @@
 {
   "name": "tslint-teamcity-reporter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A TSLint formatter/reporter for use in TeamCity which groups by files using TeamCity Test Suite",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
 	  "grunt": "~0.4.1",
 	  "grunt-tslint": "~0.4.0",
 	  "grunt-contrib-jshint": "0.6.4",
-	  "tslint-teamcity-reporter": "0.1.0",
+	  "tslint-teamcity-reporter": "0.1.1",
 	  "grunt-run-grunt": "~0.1.0",
 	  "grunt-mocha-test": "~0.7.0",
 	  "grunt-contrib-clean": "~0.5.0",
