@@ -16,6 +16,7 @@ Running "tslint:files" (tslint) task
 >> ##teamcity[testStarted name='fixtures/files/failureA.test.ts: line 6, col 2, file should end with a newline']
 >> ##teamcity[testFailed name='fixtures/files/failureA.test.ts: line 6, col 2, file should end with a newline' message='eofline: file should end with a newline' detailed='']
 >> ##teamcity[testFinished name='fixtures/files/failureA.test.ts: line 6, col 2, file should end with a newline']
+>> ##teamcity[testSuiteFinished name='TSLint: fixtures/files/failureA.test.ts']
 
 >> ##teamcity[testSuiteStarted name='TSLint: fixtures/files/failureB.test.ts']
 >> ##teamcity[testStarted name='fixtures/files/failureB.test.ts: line 2, col 11, missing semicolon']
@@ -27,6 +28,7 @@ Running "tslint:files" (tslint) task
 >> ##teamcity[testStarted name='fixtures/files/failureB.test.ts: line 3, col 9, missing whitespace']
 >> ##teamcity[testFailed name='fixtures/files/failureB.test.ts: line 3, col 9, missing whitespace' message='whitespace: missing whitespace' detailed='']
 >> ##teamcity[testFinished name='fixtures/files/failureB.test.ts: line 3, col 9, missing whitespace']
+>> ##teamcity[testSuiteFinished name='TSLint: fixtures/files/failureB.test.ts']
 Warning: Task "tslint:files" failed. Use --force to continue.
 
 Aborted due to warnings.

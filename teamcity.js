@@ -174,6 +174,7 @@ TSHintTeamcityFormatter.prototype = Object.create({
 					output.push("##teamcity[testFinished name='" + errorObj.name + "']");
 
 				});
+				output.push("##teamcity[testSuiteFinished name='" + suite + "']");
 				writeln('');
 			}
 		});
