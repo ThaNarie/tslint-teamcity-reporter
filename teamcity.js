@@ -73,7 +73,7 @@ function TSHintTeamcityFormatter() {
 
 }
 TSHintTeamcityFormatter.prototype = Object.create({
-	name: 'tslint-path-formatter',
+	name: 'tslint-teamcity-reporter',
 	getName: function () {
 		return this.name;
 	},
@@ -194,57 +194,3 @@ module.exports = {
 		options.style = enable ? 'ansi' : false;
 	}
 };
-
-
-
-
-
-
-
-
-
-
-
-//module.exports = {
-//	reporter: function (results) {
-//		var output = [];
-//
-//		// Categorise each error by filename
-//		var errors = results.reduce(function (previous, current) {
-//			var error = current.error;
-//
-//			if (!previous[current.file]) {
-//				previous[current.file] = [];
-//			}
-//
-//			previous[current.file].push({
-//				name: escapeTeamcityString(current.file + ": line " + error.line + ", col " + error.character + ", " + error.reason),
-//				message: escapeTeamcityString(error.code + ": " + error.reason),
-//				detailed: escapeTeamcityString(error.evidence)
-//			});
-//
-//			return previous;
-//		}, {});
-//
-//		// Collate teamcity output into test suites (by filename)
-//		Object.keys(errors).forEach(function (key) {
-//			var suite = "TSLint: " + key;
-//			output.push("##teamcity[testSuiteStarted name='" + suite + "']");
-//			errors[key].forEach(function (test) {
-//				output.push("##teamcity[testStarted name='" + test.name + "']");
-//				output.push("##teamcity[testFailed name='" + test.name + "' message='" + test.message + "' detailed='" + test.detailed + "']");
-//				output.push("##teamcity[testFinished name='" + test.name + "']");
-//			});
-//			output.push("##teamcity[testSuiteFinished name='" + suite + "']");
-//		});
-//
-//		// If there were no output, tell TeamCity that tests ran successfully
-//		if (output.length === 0) {
-//			output.push("##teamcity[testStarted name='TSLint']");
-//			output.push("##teamcity[testFinished name='TSLint']");
-//		}
-//
-//		// Print to process.stdout
-//		console.log(output.join("\n"));
-//	}
-//};
