@@ -1,0 +1,32 @@
+Running "tslint:files" (tslint) task
+
+>> ##teamcity[testSuiteStarted name='TSLint: fixtures/files/failureA.test.ts']
+>> ##teamcity[testStarted name='fixtures/files/failureA.test.ts: line 2, col 6, variable name must be in camelcase or uppercase']
+>> ##teamcity[testFailed name='fixtures/files/failureA.test.ts: line 2, col 6, variable name must be in camelcase or uppercase' message='variable-name: variable name must be in camelcase or uppercase' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureA.test.ts: line 2, col 6, variable name must be in camelcase or uppercase']
+>> ##teamcity[testStarted name='fixtures/files/failureA.test.ts: line 4, col 3, duplicate key |'a|'']
+>> ##teamcity[testFailed name='fixtures/files/failureA.test.ts: line 4, col 3, duplicate key |'a|'' message='no-duplicate-key: duplicate key |'a|'' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureA.test.ts: line 4, col 3, duplicate key |'a|'']
+>> ##teamcity[testStarted name='fixtures/files/failureA.test.ts: line 5, col 3, missing semicolon']
+>> ##teamcity[testFailed name='fixtures/files/failureA.test.ts: line 5, col 3, missing semicolon' message='semicolon: missing semicolon' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureA.test.ts: line 5, col 3, missing semicolon']
+>> ##teamcity[testStarted name='fixtures/files/failureA.test.ts: line 6, col 1, missing whitespace']
+>> ##teamcity[testFailed name='fixtures/files/failureA.test.ts: line 6, col 1, missing whitespace' message='whitespace: missing whitespace' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureA.test.ts: line 6, col 1, missing whitespace']
+>> ##teamcity[testStarted name='fixtures/files/failureA.test.ts: line 6, col 2, file should end with a newline']
+>> ##teamcity[testFailed name='fixtures/files/failureA.test.ts: line 6, col 2, file should end with a newline' message='eofline: file should end with a newline' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureA.test.ts: line 6, col 2, file should end with a newline']
+
+>> ##teamcity[testSuiteStarted name='TSLint: fixtures/files/failureB.test.ts']
+>> ##teamcity[testStarted name='fixtures/files/failureB.test.ts: line 2, col 11, missing semicolon']
+>> ##teamcity[testFailed name='fixtures/files/failureB.test.ts: line 2, col 11, missing semicolon' message='semicolon: missing semicolon' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureB.test.ts: line 2, col 11, missing semicolon']
+>> ##teamcity[testStarted name='fixtures/files/failureB.test.ts: line 3, col 1, missing whitespace']
+>> ##teamcity[testFailed name='fixtures/files/failureB.test.ts: line 3, col 1, missing whitespace' message='whitespace: missing whitespace' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureB.test.ts: line 3, col 1, missing whitespace']
+>> ##teamcity[testStarted name='fixtures/files/failureB.test.ts: line 3, col 9, missing whitespace']
+>> ##teamcity[testFailed name='fixtures/files/failureB.test.ts: line 3, col 9, missing whitespace' message='whitespace: missing whitespace' detailed='']
+>> ##teamcity[testFinished name='fixtures/files/failureB.test.ts: line 3, col 9, missing whitespace']
+Warning: Task "tslint:files" failed. Use --force to continue.
+
+Aborted due to warnings.
