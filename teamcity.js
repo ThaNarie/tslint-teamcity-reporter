@@ -163,8 +163,8 @@ TSHintTeamcityFormatter.prototype = Object.create({
 					}
 
 					var errorObj = {
-						name: escapeTeamcityString(res.file + ": line " + err.line + ", col " + err.character + ", " + err.reason),
-						message: escapeTeamcityString(err.code + ": " + err.reason),
+						name: escapeTeamcityString("(" + err.line + "," + err.character + ") " + err.reason),
+						message: escapeTeamcityString("[" + err.code + "] " + err.reason),
 						detailed: escapeTeamcityString(err.evidence)
 					};
 
