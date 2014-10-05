@@ -15,7 +15,6 @@ module.exports = function (grunt) {
 		jshint: {
 			//merge reporter into jshint
 			options: grunt.util._.defaults(grunt.file.readJSON('.jshintrc'), {
-				reporter: './node_modules/jshint-path-reporter'
 			}),
 			all: [
 				'Gruntfile.js',
