@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/ThaNarie/tslint-teamcity-reporter.png?branch=master)](http://travis-ci.org/ThaNarie/tslint-teamcity-reporter) [![Dependency Status](https://gemnasium.com/ThaNarie/tslint-teamcity-reporter.png)](https://gemnasium.com/ThaNarie/tslint-teamcity-reporter) [![NPM version](https://badge.fury.io/js/tslint-teamcity-reporter.png)](http://badge.fury.io/js/tslint-teamcity-reporter)
+
 ## TSLint TeamCity Reporter
 
 A TSLint formatter/reporter for use in TeamCity which groups by files using TeamCity Test Suite
