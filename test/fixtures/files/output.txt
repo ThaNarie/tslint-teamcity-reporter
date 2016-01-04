@@ -29,6 +29,7 @@ Running "tslint:files" (tslint) task
 >> ##teamcity[testFailed name='(3,9) missing whitespace' message='|[whitespace|] missing whitespace' detailed='']
 >> ##teamcity[testFinished name='(3,9) missing whitespace']
 >> ##teamcity[testSuiteFinished name='TSLint: fixtures/files/failureB.test.ts']
+>> 8 errors in 2 files
 Warning: Task "tslint:files" failed. Use --force to continue.
 
 Aborted due to warnings.
