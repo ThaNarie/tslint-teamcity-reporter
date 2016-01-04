@@ -10,9 +10,6 @@ Running "tslint:files" (tslint) task
 >> ##teamcity[testStarted name='(5,3) missing semicolon']
 >> ##teamcity[testFailed name='(5,3) missing semicolon' message='|[semicolon|] missing semicolon' detailed='']
 >> ##teamcity[testFinished name='(5,3) missing semicolon']
->> ##teamcity[testStarted name='(6,1) missing whitespace']
->> ##teamcity[testFailed name='(6,1) missing whitespace' message='|[whitespace|] missing whitespace' detailed='']
->> ##teamcity[testFinished name='(6,1) missing whitespace']
 >> ##teamcity[testStarted name='(6,2) file should end with a newline']
 >> ##teamcity[testFailed name='(6,2) file should end with a newline' message='|[eofline|] file should end with a newline' detailed='']
 >> ##teamcity[testFinished name='(6,2) file should end with a newline']
@@ -22,14 +19,11 @@ Running "tslint:files" (tslint) task
 >> ##teamcity[testStarted name='(2,11) missing semicolon']
 >> ##teamcity[testFailed name='(2,11) missing semicolon' message='|[semicolon|] missing semicolon' detailed='']
 >> ##teamcity[testFinished name='(2,11) missing semicolon']
->> ##teamcity[testStarted name='(3,1) missing whitespace']
->> ##teamcity[testFailed name='(3,1) missing whitespace' message='|[whitespace|] missing whitespace' detailed='']
->> ##teamcity[testFinished name='(3,1) missing whitespace']
 >> ##teamcity[testStarted name='(3,9) missing whitespace']
 >> ##teamcity[testFailed name='(3,9) missing whitespace' message='|[whitespace|] missing whitespace' detailed='']
 >> ##teamcity[testFinished name='(3,9) missing whitespace']
 >> ##teamcity[testSuiteFinished name='TSLint: fixtures/files/failureB.test.ts']
->> 8 errors in 2 files
+>> 6 errors in 2 files
 Warning: Task "tslint:files" failed. Use --force to continue.
 
 Aborted due to warnings.
