@@ -101,8 +101,8 @@ TSHintTeamcityFormatter.prototype = Object.create({
 			var lineAndCharacter = failure.getStartPosition().getLineAndCharacter();
 			var item = {
 				reason: failure.getFailure(),
-				line: lineAndCharacter.line() + 1,
-				character: lineAndCharacter.character() + 1,
+				line: lineAndCharacter.line + 1,
+				character: lineAndCharacter.character + 1,
 				code: (failure.getRuleName ? failure.getRuleName() : '')
 			};
 			res.errors.push(item);
