@@ -1,6 +1,6 @@
 {
   "name": "tslint-teamcity-reporter",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "A TSLint formatter/reporter for use in TeamCity which groups by files using TeamCity Test Suite",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,9 @@
     "url": "https://github.com/ThaNarie/tslint-teamcity-reporter/issues"
   },
   "homepage": "https://github.com/ThaNarie/tslint-teamcity-reporter",
+  "peerDependencies": {
+	"tslint": "^3.0.0 || >=3.0.0-dev || >=3.1.0-dev || >=3.2.0-dev || >=3.3.0-dev"
+  },
   "devDependencies": {
 	  "grunt-cli": "~0.1.13",
 	  "grunt": "~0.4.5",
