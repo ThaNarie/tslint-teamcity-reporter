@@ -15,7 +15,7 @@ Use it with:
 #### JSHint CLI
 
 ```
-jshint --reporter node_modules/tslint-teamcity-reporter/teamcity.js file.js
+tslint --formatters-dir node_modules/tslint-teamcity-reporter/ --format TSHintTeamcity file.ts
 ```
 
 #### grunt-tslint
