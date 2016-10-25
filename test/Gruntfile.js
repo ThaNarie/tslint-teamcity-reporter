@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 		tslint: {
 			options: {
 				configuration: grunt.file.readJSON('./fixtures/tslint.json'),
-				formatter: path.resolve('./../teamcity.js')
+				formatter: path.resolve('./../TSHintTeamcityFormatter.js')
 			},
 			files: {
 				src: ['fixtures/files/failureA.test.ts', 'fixtures/files/failureB.test.ts']

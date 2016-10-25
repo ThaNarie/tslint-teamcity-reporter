@@ -1,1 +1,1 @@
-module.exports = require(require('path').join(__dirname, 'teamcity.js'));
+module.exports = require(require('path').join(__dirname, 'TSHintTeamcityFormatter.js'));
