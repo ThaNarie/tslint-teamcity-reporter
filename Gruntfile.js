@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 			demo: {
 				options: {
 					configuration: grunt.file.readJSON('./test/fixtures/tslint.json'),
-					formatter: path.resolve('./teamcity')
+					formatter: path.resolve('./TSHintTeamcityFormatter')
 				},
 				src: ['./test/fixtures/files/**/*.ts']
 			}
