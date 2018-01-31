@@ -24,7 +24,8 @@ tslint --formatters-dir node_modules/tslint-teamcity-reporter/ --format TSHintTe
 grunt.initConfig({
 	tslint: {
 		options: {
-			formatter: 'tslint-teamcity-reporter'
+			formatter: 'tslint-teamcity-reporter',
+			formattersDirectory: 'node_modules/tslint-teamcity-reporter/'
 		},
 		files: {
       src: ['**/*.ts']
