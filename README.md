@@ -38,20 +38,47 @@ tslint files/**/*.ts -t ./node_modules/tslint-teamcity-reporter/index.js
 
 #### grunt-tslint
 
-```javascript
-grunt.initConfig({
-	tslint: {
-		options: {
-			formatter: 'tslint-teamcity-reporter'
-		},
-		files: {
-      src: ['**/*.ts']
-    }
-	}
-});
+```js
+module.exports = grunt => {
+  grunt.loadNpmTasks('grunt-tslint');
 
-grunt.loadNpmTasks('tslint-teamcity-reporter');
-grunt.registerTask('default', ['tslint']);
+  grunt.initConfig({
+    tslint: {
+      options: {
+        configuration: './tslint.json',
+        formatter: 'tslint-teamcity-reporter',
+      },
+      files: {
+        src: ['**/*.ts'],
+      },
+    },
+  });
+
+  grunt.registerTask('default', ['tslint']);
+};
+
+```
+
+#### gulp-tslint
+
+```js
+const gulp = require('gulp');
+const tslint = require('gulp-tslint');
+
+gulp.task('tslint', () =>
+  gulp
+    .src('**/*.ts')
+    .pipe(
+      tslint({
+        configuration: './tslint.json',
+        formatter: 'tslint-teamcity-reporter',
+        formattersDirectory: 'anything-but-falsy', // passing a falsy value will resolve in `null` and throw an error in tslint
+      }),
+    )
+    .pipe(tslint.report()),
+);
+
+gulp.task('default', ['tslint']);
 ```
 
 ### Configuration
