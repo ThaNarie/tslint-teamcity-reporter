@@ -1,0 +1,24 @@
+language: node_js
+
+cache: yarn
+
+node_js:
+  - 'stable'
+  - '6'
+  - '8'
+  - '10'
+
+sudo: false
+
+script:
+  - yarn test
+
+deploy:
+  - provider: npm
+    email: 'thanarie@gmail.com'
+    api_key:
+      secure: Pu74+OVhLBIwgB8i2/k46XpSdYbtFccRdkZvSMTP3sbHgJvvlq/8KN9iWgnqi6kXE1e9vWM5Ru0oSS1+qtGPrHWy2f4ZRml+RJ1G0vVvRBAO9U7XsKiOVtRTJaTNQnCZONnDSCV3Q853T8mEYC/g3PcEGbfmsMhz21Dr0iNQBLA=
+    on:
+      tags: true
+      node: 'stable'
+    skip_cleanup: true
