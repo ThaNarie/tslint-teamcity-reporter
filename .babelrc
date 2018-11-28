@@ -14,7 +14,7 @@
   "plugins": [
     ["@babel/plugin-transform-runtime", {
       "helpers": true,
-      "polyfill": false,
+      "polyfill": true,
       "regenerator": false,
       "moduleName": "@babel/runtime"
     }]
