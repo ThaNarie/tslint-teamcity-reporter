@@ -119,7 +119,7 @@ export function getUserConfig(propNames): { [key: string]: string } {
   const config = JSON.parse(loadPackageJson())['tslint-teamcity-reporter'] || {};
 
   const reporter =
-    propNames.reporter || config.reporter || process.env.ESLINT_TEAMCITY_REPORTER || 'errors';
+    propNames.reporter || config.reporter || process.env.TSLINT_TEAMCITY_REPORTER || 'errors';
 
   const reportName =
     propNames.reportName ||
