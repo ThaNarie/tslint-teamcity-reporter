@@ -93,6 +93,7 @@ If you have a package.json file in the current directory, you can add an extra "
 ```json
 {
   "tslint-teamcity": {
+    "reporter": "inspections",
     "report-name": "My TSLint Violations",
     "error-statistics-name": "My TSLint Error Count",
     "warning-statistics-name": "My TSLint Warning Count"
@@ -103,6 +104,7 @@ If you have a package.json file in the current directory, you can add an extra "
 #### 2. ENV variables
 
 ```sh
+export TSLINT_TEAMCITY_REPORTER="inspections"
 export TSLINT_TEAMCITY_REPORT_NAME="My Formatting Problems"
 export TSLINT_TEAMCITY_ERROR_STATISTICS_NAME="My Error Count"
 export TSLINT_TEAMCITY_WARNING_STATISTICS_NAME="My Warning Count"
@@ -113,6 +115,9 @@ You can also output your current settings to the log if you set:
 ```sh
 export TSLINT_TEAMCITY_DISPLAY_CONFIG=true
 ```
+
+#### Output type
+By default, the output is displayed as tests on TeamCity build (`"reporter": "errors"`). You can change it to be displayed as "Inspections" in a separate tab by setting the `"reporter": "inspections"` option.
 
 
 ## Building
