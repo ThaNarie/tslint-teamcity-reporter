@@ -105,5 +105,43 @@ describe('utils', () => {
         }),
       ).to.eql(`##teamcity[testStdOut name='|[report-name|]: |[test.js|]' out='warning: ${escapeTeamCityString(warnings)}']`);
     });
+
+    it('returns the INSPECTION_TYPE message', () => {
+      expect(
+        getOutputMessage(TeamCityMessages.INSPECTION_TYPE, {
+          reportName: 'report-name',
+          ruleName: 'rule-name',
+        }),
+      ).to.eql(`##teamcity[inspectionType id='rule-name' category='report-name' name='rule-name' description='report-name']`);
+    });
+    it('returns the INSPECTION message', () => {
+      const formattedMessage = '';
+      expect(
+        getOutputMessage(TeamCityMessages.INSPECTION, {
+          formattedMessage,
+          reportName: 'report-name',
+          ruleName: 'rule-name',
+          filePath: 'test.js',
+          line: 1,
+          severity: 'ERROR'
+        }),
+      ).to.eql(`##teamcity[inspection typeId='rule-name' message='${formattedMessage}' file='test.js' line='1' SEVERITY='ERROR']`);
+    });
+
+    it('returns escaped values in inspections', () => {
+      const formattedMessage = '|[]\'';
+      expect(
+        getOutputMessage(TeamCityMessages.INSPECTION, {
+          formattedMessage,
+          reportName: '[report-name]',
+          ruleName: '[rule-name]',
+          filePath: '[test.js]',
+          line: 1,
+          severity: 'WARNING'
+        }),
+      ).to.eql(`##teamcity[inspection typeId='|[rule-name|]' message='${
+        escapeTeamCityString(formattedMessage)
+        }' file='|[test.js|]' line='1' SEVERITY='WARNING']`);
+    });
   });
 });
