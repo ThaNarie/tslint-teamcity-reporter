@@ -1,24 +1,26 @@
 import { Formatter } from '../src/lib/Reporter';
 import { expect } from 'chai';
-import { Replacement } from 'tslint';
+import { Replacement, RuleFailure } from 'tslint';
 import * as ts from "typescript";
 import { createFailure, getSourceFile } from './utils';
 
 let reporter: Formatter;
 let sourceFile1: ts.SourceFile;
 let sourceFile2: ts.SourceFile;
+let failures: Array<RuleFailure>;
+let maxPositionObj1: ts.LineAndCharacter;
+let maxPositionObj2: ts.LineAndCharacter;
 
 describe('Reporter', () => {
   beforeEach(() => {
     sourceFile1 = getSourceFile('test1.ts');
     sourceFile2 = getSourceFile('test2.ts');
     reporter = new Formatter();
-  });
 
-  it('formats failures as tests', () => {
     const maxPosition = sourceFile1.getFullWidth();
-
-    const failures = [
+    maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPosition - 1);
+    maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPosition - 1);
+    failures = [
       createFailure(sourceFile1, 0, 1, "first failure", "first-name", undefined, "error"),
       createFailure(
         sourceFile1,
@@ -48,11 +50,9 @@ describe('Reporter', () => {
         "warning",
       ),
     ];
+  });
 
-    const maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPosition - 1);
-    const maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPosition - 1);
-
-
+  it('formats failures as tests', () => {
     const expectedResult: string = `
 ##teamcity[testSuiteStarted name='TSLint Violations']
 ##teamcity[testStarted name='TSLint Violations: test1.ts']
@@ -71,43 +71,6 @@ describe('Reporter', () => {
   });
 
   it('formats failures as inspections', () => {
-    const maxPosition = sourceFile1.getFullWidth();
-
-    const failures = [
-      createFailure(sourceFile1, 0, 1, "first failure", "first-name", undefined, "error"),
-      createFailure(
-        sourceFile1,
-        maxPosition - 1,
-        maxPosition,
-        "last failure",
-        "last-name",
-        undefined,
-        "error",
-      ),
-      createFailure(
-        sourceFile1,
-        0,
-        maxPosition,
-        "full failure",
-        "full-name",
-        new Replacement(0, 0, ""),
-        "warning",
-      ),
-      createFailure(
-        sourceFile2,
-        maxPosition - 1,
-        maxPosition,
-        "full failure",
-        "full-name",
-        new Replacement(0, 0, ""),
-        "warning",
-      ),
-    ];
-
-    const maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPosition - 1);
-    const maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPosition - 1);
-
-
     const expectedResult: string = `
 ##teamcity[inspectionType id='first-name' category='TSLint Violations' name='first-name' description='TSLint Violations']
 ##teamcity[inspection typeId='first-name' message='line 0, col 0, first failure' file='test1.ts' line='0' SEVERITY='ERROR']
