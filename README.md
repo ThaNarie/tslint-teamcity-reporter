@@ -87,8 +87,23 @@ There are several ways that you can configure tslint-teamcity.
 You don't have to configure anything by default, you just have the option to if you would like.
 Settings are looked for in the following priority:
 
-#### 1. From your package.json
-If you have a package.json file in the current directory, you can add an extra "eslint-teamcity" property to it:
+#### 1. As a second argument
+If you run tslint-teamcity-reporter by requiring it in your code, you can pass a second argument to the function:
+```js
+import { Formatter } from 'tslint-teamcity-reporter';
+
+const formatter = new Formatter();
+const options = {
+  reporter: 'inspections',
+  reportName: 'My TSLint Violations',
+  errorStatisticsName: 'My TSLint Error Count',
+  warningStatisticsName: 'My TSLint Warning Count',
+};
+console.log(formatter.format(tslintFailures, options));
+```
+
+#### 2. From your package.json
+If you have a package.json file in the current directory, you can add an extra "tslint-teamcity" property to it:
 
 ```json
 {
@@ -101,7 +116,7 @@ If you have a package.json file in the current directory, you can add an extra "
 }
 ```
 
-#### 2. ENV variables
+#### 3. ENV variables
 
 ```sh
 export TSLINT_TEAMCITY_REPORTER="inspections"
