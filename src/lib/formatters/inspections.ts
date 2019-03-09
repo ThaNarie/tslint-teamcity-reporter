@@ -6,11 +6,6 @@ import { getOutputMessage, TeamCityMessages } from '../util';
 export function formatAsInspections(failures: RuleFailure[], config: { [key: string]: string }) {
   const { reportName } = config;
 
-  if (process.env.TSLINT_TEAMCITY_DISPLAY_CONFIG) {
-    // tslint:disable-next-line no-console
-    console.info(`Running TSLint Teamcity with config: ${JSON.stringify(config, null, 4)}`);
-  }
-
   const output = [];
   let errorCount = 0;
   let warningCount = 0;

@@ -19,6 +19,12 @@ export type GetOutputMessageOptions = {
   file?: string;
   errors?: string;
   warnings?: string;
+  reportName?: string;
+  ruleName?: string;
+  formattedMessage?: string;
+  filePath?: string;
+  line?: number;
+  severity?: 'ERROR' | 'WARNING';
   [key: string]: string | number;
 };
 

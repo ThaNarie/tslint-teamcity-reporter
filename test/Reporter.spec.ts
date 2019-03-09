@@ -17,7 +17,6 @@ describe('Reporter', () => {
 
   it('formats failures as tests', () => {
     const maxPosition = sourceFile1.getFullWidth();
-    process.env.TSLINT_TEAMCITY_REPORTER = 'errors';
 
     const failures = [
       createFailure(sourceFile1, 0, 1, "first failure", "first-name", undefined, "error"),
@@ -73,7 +72,6 @@ describe('Reporter', () => {
 
   it('formats failures as inspections', () => {
     const maxPosition = sourceFile1.getFullWidth();
-    process.env.TSLINT_TEAMCITY_REPORTER = 'inspections';
 
     const failures = [
       createFailure(sourceFile1, 0, 1, "first failure", "first-name", undefined, "error"),
@@ -121,7 +119,7 @@ describe('Reporter', () => {
 ##teamcity[buildStatisticValue key='TSLint Error Count' value='2']
 ##teamcity[buildStatisticValue key='TSLint Warning Count' value='2']`.slice(1); // strip leading newline
 
-    const actualResult = reporter.format(failures);
+    const actualResult = reporter.format(failures, { reporter: 'inspections' });
     expect(actualResult).to.eql(expectedResult);
   });
 });

@@ -25,22 +25,22 @@ export class Formatter extends AbstractFormatter {
   };
   /* tslint:enable:object-literal-sort-keys */
 
-  public format(failures: RuleFailure[]): string {
-    const config = getUserConfig({});
+  public format(failures: RuleFailure[], config: { [key: string]: string } = {}): string {
+    const userConfig = getUserConfig(config);
 
     if (process.env.TSLINT_TEAMCITY_DISPLAY_CONFIG) {
       // tslint:disable-next-line no-console
-      console.info(`Running TSLint Teamcity with config: ${JSON.stringify(config, null, 4)}`);
+      console.info(`Running TSLint Teamcity with config: ${JSON.stringify(userConfig, null, 4)}`);
     }
 
     let outputMessage = '';
-    switch (config.reporter.toLowerCase()) {
+    switch (userConfig.reporter.toLowerCase()) {
       case 'inspections':
-        outputMessage = formatAsInspections(failures, config);
+        outputMessage = formatAsInspections(failures, userConfig);
         break;
       case 'errors':
       default:
-        outputMessage = formatAsTests(failures, config);
+        outputMessage = formatAsTests(failures, userConfig);
         break;
     }
 

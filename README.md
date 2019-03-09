@@ -117,7 +117,7 @@ export TSLINT_TEAMCITY_DISPLAY_CONFIG=true
 ```
 
 #### Output type
-By default, the output is displayed as tests on TeamCity build (`"reporter": "errors"`). You can change it to be displayed as "Inspections" in a separate tab by setting the `"reporter": "inspections"` option.
+By default, the output is displayed as tests on a TeamCity build (`"reporter": "errors"`). You can change it to be displayed as "Inspections" in a separate tab by setting the `"reporter": "inspections"` option.
 
 
 ## Building
