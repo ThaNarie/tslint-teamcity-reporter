@@ -87,12 +87,28 @@ There are several ways that you can configure tslint-teamcity.
 You don't have to configure anything by default, you just have the option to if you would like.
 Settings are looked for in the following priority:
 
-#### 1. From your package.json
-If you have a package.json file in the current directory, you can add an extra "eslint-teamcity" property to it:
+#### 1. As a second argument
+If you run tslint-teamcity-reporter by requiring it in your code, you can pass a second argument to the function:
+```js
+import { Formatter } from 'tslint-teamcity-reporter';
+
+const formatter = new Formatter();
+const options = {
+  reporter: 'inspections',
+  reportName: 'My TSLint Violations',
+  errorStatisticsName: 'My TSLint Error Count',
+  warningStatisticsName: 'My TSLint Warning Count',
+};
+console.log(formatter.format(tslintFailures, options));
+```
+
+#### 2. From your package.json
+If you have a package.json file in the current directory, you can add an extra "tslint-teamcity" property to it:
 
 ```json
 {
   "tslint-teamcity": {
+    "reporter": "inspections",
     "report-name": "My TSLint Violations",
     "error-statistics-name": "My TSLint Error Count",
     "warning-statistics-name": "My TSLint Warning Count"
@@ -100,9 +116,10 @@ If you have a package.json file in the current directory, you can add an extra "
 }
 ```
 
-#### 2. ENV variables
+#### 3. ENV variables
 
 ```sh
+export TSLINT_TEAMCITY_REPORTER="inspections"
 export TSLINT_TEAMCITY_REPORT_NAME="My Formatting Problems"
 export TSLINT_TEAMCITY_ERROR_STATISTICS_NAME="My Error Count"
 export TSLINT_TEAMCITY_WARNING_STATISTICS_NAME="My Warning Count"
@@ -113,6 +130,9 @@ You can also output your current settings to the log if you set:
 ```sh
 export TSLINT_TEAMCITY_DISPLAY_CONFIG=true
 ```
+
+#### Output type
+By default, the output is displayed as tests on a TeamCity build (`"reporter": "errors"`). You can change it to be displayed as "Inspections" in a separate tab by setting the `"reporter": "inspections"` option.
 
 
 ## Building

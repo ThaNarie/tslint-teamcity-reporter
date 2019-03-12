@@ -1,24 +1,26 @@
 import { Formatter } from '../src/lib/Reporter';
-import {expect} from 'chai';
-import { Replacement } from 'tslint';
+import { expect } from 'chai';
+import { Replacement, RuleFailure } from 'tslint';
 import * as ts from "typescript";
 import { createFailure, getSourceFile } from './utils';
 
-let reporter:Formatter;
+let reporter: Formatter;
 let sourceFile1: ts.SourceFile;
 let sourceFile2: ts.SourceFile;
+let failures: Array<RuleFailure>;
+let maxPositionObj1: ts.LineAndCharacter;
+let maxPositionObj2: ts.LineAndCharacter;
 
 describe('Reporter', () => {
   beforeEach(() => {
     sourceFile1 = getSourceFile('test1.ts');
     sourceFile2 = getSourceFile('test2.ts');
     reporter = new Formatter();
-  });
 
-  it('formats failures', () => {
     const maxPosition = sourceFile1.getFullWidth();
-
-    const failures = [
+    maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPosition - 1);
+    maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPosition - 1);
+    failures = [
       createFailure(sourceFile1, 0, 1, "first failure", "first-name", undefined, "error"),
       createFailure(
         sourceFile1,
@@ -48,12 +50,10 @@ describe('Reporter', () => {
         "warning",
       ),
     ];
+  });
 
-    const maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPosition - 1);
-    const maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPosition - 1);
-
-
-    const expectedResult:string = `
+  it('formats failures as tests', () => {
+    const expectedResult: string = `
 ##teamcity[testSuiteStarted name='TSLint Violations']
 ##teamcity[testStarted name='TSLint Violations: test1.ts']
 ##teamcity[testFailed name='TSLint Violations: test1.ts' message='line 0, col 0, first failure (first-name)|nline ${maxPositionObj1.line}, col ${maxPositionObj1.character}, last failure (last-name)']
@@ -67,6 +67,22 @@ describe('Reporter', () => {
 ##teamcity[buildStatisticValue key='TSLint Warning Count' value='2']`.slice(1); // strip leading newline
 
     const actualResult = reporter.format(failures);
+    expect(actualResult).to.eql(expectedResult);
+  });
+
+  it('formats failures as inspections', () => {
+    const expectedResult: string = `
+##teamcity[inspectionType id='first-name' category='TSLint Violations' name='first-name' description='TSLint Violations']
+##teamcity[inspection typeId='first-name' message='line 0, col 0, first failure' file='test1.ts' line='0' SEVERITY='ERROR']
+##teamcity[inspectionType id='last-name' category='TSLint Violations' name='last-name' description='TSLint Violations']
+##teamcity[inspection typeId='last-name' message='line 12, col 1, last failure' file='test1.ts' line='12' SEVERITY='ERROR']
+##teamcity[inspectionType id='full-name' category='TSLint Violations' name='full-name' description='TSLint Violations']
+##teamcity[inspection typeId='full-name' message='line 0, col 0, full failure' file='test1.ts' line='0' SEVERITY='WARNING']
+##teamcity[inspection typeId='full-name' message='line 9, col 38, full failure' file='test2.ts' line='9' SEVERITY='WARNING']
+##teamcity[buildStatisticValue key='TSLint Error Count' value='2']
+##teamcity[buildStatisticValue key='TSLint Warning Count' value='2']`.slice(1); // strip leading newline
+
+    const actualResult = reporter.format(failures, { reporter: 'inspections' });
     expect(actualResult).to.eql(expectedResult);
   });
 });
