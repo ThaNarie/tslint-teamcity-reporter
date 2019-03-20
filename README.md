@@ -103,11 +103,11 @@ console.log(formatter.format(tslintFailures, options));
 ```
 
 #### 2. From your package.json
-If you have a package.json file in the current directory, you can add an extra "tslint-teamcity" property to it:
+If you have a package.json file in the current directory, you can add an extra "tslint-teamcity-reporter" property to it:
 
 ```json
 {
-  "tslint-teamcity": {
+  "tslint-teamcity-reporter": {
     "reporter": "inspections",
     "report-name": "My TSLint Violations",
     "error-statistics-name": "My TSLint Error Count",
