@@ -17,15 +17,16 @@ describe('Reporter', () => {
     sourceFile2 = getSourceFile('test2.ts');
     reporter = new Formatter();
 
-    const maxPosition = sourceFile1.getFullWidth();
-    maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPosition - 1);
-    maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPosition - 1);
+    const maxPositionFile1 = sourceFile1.getFullWidth();
+    const maxPositionFile2 = sourceFile2.getFullWidth();
+    maxPositionObj1 = sourceFile1.getLineAndCharacterOfPosition(maxPositionFile1 - 1);
+    maxPositionObj2 = sourceFile2.getLineAndCharacterOfPosition(maxPositionFile2 - 1);
     failures = [
       createFailure(sourceFile1, 0, 1, "first failure", "first-name", undefined, "error"),
       createFailure(
         sourceFile1,
-        maxPosition - 1,
-        maxPosition,
+        maxPositionFile1 - 1,
+        maxPositionFile1,
         "last failure",
         "last-name",
         undefined,
@@ -34,7 +35,7 @@ describe('Reporter', () => {
       createFailure(
         sourceFile1,
         0,
-        maxPosition,
+        maxPositionFile1,
         "full failure",
         "full-name",
         new Replacement(0, 0, ""),
@@ -42,8 +43,8 @@ describe('Reporter', () => {
       ),
       createFailure(
         sourceFile2,
-        maxPosition - 1,
-        maxPosition,
+        maxPositionFile2 - 1,
+        maxPositionFile2,
         "full failure",
         "full-name",
         new Replacement(0, 0, ""),
@@ -78,7 +79,7 @@ describe('Reporter', () => {
 ##teamcity[inspection typeId='last-name' message='line 12, col 1, last failure' file='test1.ts' line='12' SEVERITY='ERROR']
 ##teamcity[inspectionType id='full-name' category='TSLint Violations' name='full-name' description='TSLint Violations']
 ##teamcity[inspection typeId='full-name' message='line 0, col 0, full failure' file='test1.ts' line='0' SEVERITY='WARNING']
-##teamcity[inspection typeId='full-name' message='line 9, col 38, full failure' file='test2.ts' line='9' SEVERITY='WARNING']
+##teamcity[inspection typeId='full-name' message='line 8, col 1, full failure' file='test2.ts' line='8' SEVERITY='WARNING']
 ##teamcity[buildStatisticValue key='TSLint Error Count' value='2']
 ##teamcity[buildStatisticValue key='TSLint Warning Count' value='2']`.slice(1); // strip leading newline
 
