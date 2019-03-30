@@ -29,9 +29,8 @@ export function formatAsInspections(failures: RuleFailure[], config: { [key: str
       const relativeFilePath = path.relative(process.cwd(), failure.getFileName());
       const filePath = relativeFilePath.replace(/\\/g, '/'); // Ensure slashes on Windows
       const startPos = failure.getStartPosition().getLineAndCharacter();
-      const formattedMessage = `line ${startPos.line}, col ${
-        startPos.character
-      }, ${failure.getFailure()}`;
+      const lineAndColMessage = `line ${startPos.line}, col ${startPos.character}`;
+      const formattedMessage = `${lineAndColMessage}, ${failure.getFailure()}`;
 
       const isError = failure.getRuleSeverity() === 'error';
       const severity = isError ? 'ERROR' : 'WARNING';
