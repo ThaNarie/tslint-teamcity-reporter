@@ -29,7 +29,8 @@ export function formatAsInspections(failures: RuleFailure[], config: { [key: str
       const relativeFilePath = path.relative(process.cwd(), failure.getFileName());
       const filePath = relativeFilePath.replace(/\\/g, '/'); // Ensure slashes on Windows
       const lineAndCharacter = failure.getStartPosition().getLineAndCharacter();
-      const lineAndColMessage = `line ${lineAndCharacter.line}, col ${lineAndCharacter.character}`;
+      const lineAndColMessage = `line ${lineAndCharacter.line +
+        1}, col ${lineAndCharacter.character + 1}`;
       const formattedMessage = `${lineAndColMessage}, ${failure.getFailure()}`;
 
       const isError = failure.getRuleSeverity() === 'error';
@@ -45,7 +46,7 @@ export function formatAsInspections(failures: RuleFailure[], config: { [key: str
           filePath,
           severity,
           ruleName: result.ruleName,
-          line: lineAndCharacter.line,
+          line: lineAndCharacter.line + 1,
         }),
       );
     });

@@ -74,12 +74,12 @@ describe('Reporter', () => {
   it('formats failures as inspections', () => {
     const expectedResult: string = `
 ##teamcity[inspectionType id='first-name' category='TSLint Violations' name='first-name' description='TSLint Violations']
-##teamcity[inspection typeId='first-name' message='line 0, col 0, first failure' file='test1.ts' line='0' SEVERITY='ERROR']
+##teamcity[inspection typeId='first-name' message='line 1, col 1, first failure' file='test1.ts' line='1' SEVERITY='ERROR']
 ##teamcity[inspectionType id='last-name' category='TSLint Violations' name='last-name' description='TSLint Violations']
-##teamcity[inspection typeId='last-name' message='line 12, col 1, last failure' file='test1.ts' line='12' SEVERITY='ERROR']
+##teamcity[inspection typeId='last-name' message='line 13, col 2, last failure' file='test1.ts' line='13' SEVERITY='ERROR']
 ##teamcity[inspectionType id='full-name' category='TSLint Violations' name='full-name' description='TSLint Violations']
-##teamcity[inspection typeId='full-name' message='line 0, col 0, full failure' file='test1.ts' line='0' SEVERITY='WARNING']
-##teamcity[inspection typeId='full-name' message='line 8, col 1, full failure' file='test2.ts' line='8' SEVERITY='WARNING']
+##teamcity[inspection typeId='full-name' message='line 1, col 1, full failure' file='test1.ts' line='1' SEVERITY='WARNING']
+##teamcity[inspection typeId='full-name' message='line 9, col 2, full failure' file='test2.ts' line='9' SEVERITY='WARNING']
 ##teamcity[buildStatisticValue key='TSLint Error Count' value='2']
 ##teamcity[buildStatisticValue key='TSLint Warning Count' value='2']`.slice(1); // strip leading newline
 
