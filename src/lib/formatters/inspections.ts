@@ -28,8 +28,8 @@ export function formatAsInspections(failures: RuleFailure[], config: { [key: str
     result.messages.forEach(failure => {
       const relativeFilePath = path.relative(process.cwd(), failure.getFileName());
       const filePath = relativeFilePath.replace(/\\/g, '/'); // Ensure slashes on Windows
-      const startPos = failure.getStartPosition().getLineAndCharacter();
-      const lineAndColMessage = `line ${startPos.line}, col ${startPos.character}`;
+      const lineAndCharacter = failure.getStartPosition().getLineAndCharacter();
+      const lineAndColMessage = `line ${lineAndCharacter.line}, col ${lineAndCharacter.character}`;
       const formattedMessage = `${lineAndColMessage}, ${failure.getFailure()}`;
 
       const isError = failure.getRuleSeverity() === 'error';
@@ -45,7 +45,7 @@ export function formatAsInspections(failures: RuleFailure[], config: { [key: str
           filePath,
           severity,
           ruleName: result.ruleName,
-          line: startPos.line,
+          line: lineAndCharacter.line,
         }),
       );
     });
