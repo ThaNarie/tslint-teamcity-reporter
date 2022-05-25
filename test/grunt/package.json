@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.3",
     "grunt-tslint": "^5.0.2",
     "tslint-teamcity-reporter": "^3.0.1"
   }
